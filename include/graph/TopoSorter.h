@@ -91,18 +91,27 @@ public:
         // TODO
         DLinkedListSE<T> result;
         xMap<T, bool> visited(this->hash_code);
-        DLinkedList<T> vertices = this->graph->nodeList;
+        xMap<T, int> outDegree = vertex2outDegree(this->hash_code);
 
-        for (auto it = vertices.begin(); it != vertices.end(); ++it)
+        DLinkedList<T> zeroOutDegrees = listOfZeroInDegrees(outDegree);
+
+        if (sorted)
         {
-            visited.put(*it, false);
+            DLinkedListSE<T> sortedZeroOutDegrees(zeroOutDegrees);
+            sortedZeroOutDegrees.sort();
+            zeroOutDegrees = sortedZeroOutDegrees.toDLinkedList();
         }
 
-        for (auto it = vertices.begin(); it != vertices.end(); ++it)
+        for (auto vertex : this->graph->vertices())
         {
-            if (!visited.get(*it))
+            visited.put(vertex, false);
+        }
+
+        for (auto vertex : zeroOutDegrees)
+        {
+            if (!visited.get(vertex))
             {
-                dfsVisit(*it, visited, result);
+                dfsVisit(vertex, visited, result, sorted);
             }
         }
 
@@ -119,11 +128,19 @@ protected:
         visited.put(vertex, true);
 
         DLinkedList<T> neighbors = this->graph->getOutwardEdges(vertex);
-        for (auto it = neighbors.begin(); it != neighbors.end(); ++it)
+
+        if (sorted)
         {
-            if (!visited.get(*it))
+            DLinkedListSE<T> sortedNeighbors(neighbors);
+            sortedNeighbors.sort();
+            neighbors = sortedNeighbors.toDLinkedList();
+        }
+
+        for (auto neighbor : neighbors)
+        {
+            if (!visited.get(neighbor))
             {
-                dfsVisit(*it, visited, result);
+                dfsVisit(neighbor, visited, result, sorted);
             }
         }
 
@@ -153,7 +170,25 @@ protected:
 
         return inDegree;
     }
-    xMap<T, int> vertex2outDegree(int (*hash)(T &, int));
+    xMap<T, int> vertex2outDegree(int (*hash)(T &, int))
+    {
+        xMap<T, int> outDegree(hash);
+        DLinkedList<T> vertices = this->graph->vertices();
+
+        for (auto vertex : vertices)
+        {
+            outDegree.put(vertex, 0);
+        }
+
+        for (auto vertex : vertices)
+        {
+            DLinkedList<T> neighbors = this->graph->getOutwardEdges(vertex);
+            outDegree.put(vertex, neighbors.size());
+        }
+
+        return outDegree;
+    }
+
     DLinkedList<T> listOfZeroInDegrees(xMap<T, int> &inDegree)
     {
         DLinkedList<T> result;
