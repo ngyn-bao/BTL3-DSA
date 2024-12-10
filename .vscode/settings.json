@@ -84,7 +84,13 @@
     "*.tcc": "cpp",
     "deque": "cpp",
     "string_view": "cpp",
-    "span": "cpp"
+    "span": "cpp",
+    "codecvt": "cpp",
+    "cstdarg": "cpp",
+    "cwctype": "cpp",
+    "memory_resource": "cpp",
+    "numbers": "cpp",
+    "semaphore": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

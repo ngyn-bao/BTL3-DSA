@@ -267,6 +267,7 @@ V xMap<K, V>::put(K key, V value)
     int index = this->hashCode(key, capacity);
     // V retValue = value;
     // YOUR CODE IS HERE
+
     DLinkedList<Entry *> &list = table[index];
 
     for (auto pEntry : list)

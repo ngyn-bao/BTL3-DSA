@@ -1,0 +1,31 @@
+TEST QUEUE DEMO:.......................................
+Demo 1-------------------------
+
+FRONT-TO-REAR: [0, 1, 2, 3, 4]
+value -3 : not in queue
+value -2 : not in queue
+value -1 : not in queue
+value 0 : in queue
+value 1 : in queue
+value 2 : in queue
+value 3 : in queue
+value 4 : in queue
+value 5 : not in queue
+value 6 : not in queue
+value 7 : not in queue
+value 8 : not in queue
+value 9 : not in queue
+Demo 2-------------------------
+
+FRONT-TO-REAR: [P( 23.20, 25.40,  0.00), P( 24.60, 23.10,  0.00)]
+1
+1
+0
+0
+Demo 3-------------------------
+
+FRONT-TO-REAR: [(23.2, 25.4), (24.6, 23.1), (123.2, 25.4), (124.6, 23.1)]
+0
+0
+0
+0
