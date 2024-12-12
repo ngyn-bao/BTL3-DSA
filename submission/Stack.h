@@ -52,7 +52,7 @@ public:
         // TODO: return the top item
         if (this->empty())
         {
-            throw std::out_of_range("List is empty"); // Handle the error
+            throw Underflow("Stack"); // Handle the error
         }
 
         return this->list.get(0); // Placeholder

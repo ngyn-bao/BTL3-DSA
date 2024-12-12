@@ -51,7 +51,7 @@ public:
         // TODO: return the front item
         if (this->empty())
         {
-            throw std::out_of_range("List is empty");
+            throw Underflow("Queue");
         }
 
         return this->list.get(0); // Placeholder

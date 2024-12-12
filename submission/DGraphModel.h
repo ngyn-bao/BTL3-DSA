@@ -71,8 +71,8 @@ public:
         }
 
         fromNode->removeTo(toNode);
-        fromNode->setOutDegree(fromNode->outDegree() - 1);
-        toNode->setInDegree(toNode->inDegree() - 1);
+        // fromNode->setOutDegree(fromNode->outDegree() - 1);
+        // toNode->setInDegree(toNode->inDegree() - 1);
     }
     void remove(T vertex)
     {
@@ -90,8 +90,8 @@ public:
             if (removeEdge)
             {
                 node->removeTo(vertexNode);
-                node->setOutDegree(node->outDegree() - 1);
-                vertexNode->setInDegree(vertexNode->inDegree() - 1);
+                // node->setOutDegree(node->outDegree() - 1);
+                // vertexNode->setInDegree(vertexNode->inDegree() - 1);
             }
             nodeIt++;
         }
@@ -100,8 +100,8 @@ public:
         {
             Edge *edge = vertexNode->getOutwardEdges().get(0);
             vertexNode->removeTo(edge->getToNode());
-            vertexNode->setOutDegree(vertexNode->outDegree() - 1);
-            edge->getToNode()->setInDegree(edge->getToNode()->inDegree() - 1);
+            // vertexNode->setOutDegree(vertexNode->outDegree() - 1);
+            // edge->getToNode()->setInDegree(edge->getToNode()->inDegree() - 1);
         }
 
         this->nodeList.removeItem(vertexNode);

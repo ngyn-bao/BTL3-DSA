@@ -82,7 +82,7 @@ public:
         {
             DLinkedListSE<T> sortedZeroOutDegrees(zeroInDegrees);
 
-            sortedZeroOutDegrees.sort();
+            sortedZeroOutDegrees.sort(&SortSimpleOrder<T>::compare4Ascending);
 
             zeroInDegrees = sortedZeroOutDegrees.toDLinkedList();
         }
